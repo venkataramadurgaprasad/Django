@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Status</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+	{% include 'MyApp/navbar.html' %}
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-secondary text-white">
+				<h1>Your Details</h1>
+			</div>
+			<div class="card=body">
+				<br>
+				<form action="{% url 'status' %}" method="POST" enctype='multipart/form-data'>
+					{% csrf_token %}
+					Email:<input type="email" name="email">
+					<input type="submit" name="submit">
+				</form>
+			</div>
+			<div class="card-footer">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

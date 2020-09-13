@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		s = confirm("Are you sure?")
+		if(s==true){
+			location.href = "{% url 'confirm' data.id %}"
+		}
+		else{
+			location.href = "{% url 'show' data.id %}"
+		}
+	</script>
+</body>
+</html>
