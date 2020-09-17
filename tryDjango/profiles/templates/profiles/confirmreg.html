@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Confirm Page</title>
+	{% include 'profiles/navbar.html' %}
+</head>
+<body>
+		<form action="{% url 'confirmreg' id %}" method='GET' style="margin:auto;width:50%;padding:10px">
+		    <ul>
+		        <li>Please check the verification code sent to your mail</li>
+		    </ul>
+			Verification Code:<br><input type="number" name="ver_code"><br><br>
+			<input type="submit" name="submit">
+			<ul>
+			    <li>Both passwords must match else you have to register again</li>
+			</ul>
+		</form>
+</body>
+</html>

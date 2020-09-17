@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete</title>
+</head>
+<body>
+    {% if user.id == data.id %}
+	<script type="text/javascript">
+		s = confirm("Are you sure?")
+		if(s==true){
+			location.href = "{% url 'confirm' data.id %}"
+		}
+		else{
+			location.href = "{% url 'profile' data.id %}"
+		}
+	</script>
+	{% else %}
+	<div class='container'>
+	    <div class='card'>
+	        <div class='card-header bg-secondary text--white'>
+	            <h2>Invalid entry.</h2>
+	        </div>
+	    </div>
+	</div>
+	{% endif %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	{% include 'profiles/navbar.html' %}
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h2>You are logged in.</h2>
+			    </div>
+			    <div class="card-body">
+			        <h4>If you want to logout,press the button below</h4><br>
+			        <button><a href="{% url 'logout' %}">Logout</a></button><br><br>
+			        <h4>If you want to return to login homepage,press the button below</h4><br>
+			        <button><a href="{% url 'loginhome' %}">Login Homepage</a></button>
+			    </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+	<center>
+		<form method='POST'>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" name="submit">
+		</form>
+	</center>
+	{% endif %}
+</body>
+</html>

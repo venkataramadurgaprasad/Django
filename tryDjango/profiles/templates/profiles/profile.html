@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+	{% include 'profiles/navbar.html' %}
+</head>
+<body>
+	<div class="container">
+			{% if messages %}
+			{%for i in messages %}
+				<div class='alert alert-error{{ i.tags }}'>{{ i }}</div>
+				<h3>Your account is not verified.Click below to confirm.</h3>
+				<form><button><a href="{% url 'confirmreg' user.id %}">Click here</a></button></form>
+			{% endfor %}
+			{% endif %}
+		<div class="card">
+			<div class="card-header bg-secondary text-white">
+			    {% if user.id == data.id %}
+			    <h2>Full info about the {{ data.username }}</h2>
+			</div>
+			<div class="card=body">
+			    <h4>First Name:  {{ data.first_name }}</h4>
+			    <h4>Last Name:  {{ data.last_name }}</h4>
+			    <h4>Email :  {{ data.email }}</h4>
+			    {% else %}
+			    <h1>This action is not allowed.</h1>
+			    {% endif %}
+			</div>
+			<div class="card-footer">
+			    <form>
+			        <button><a href="{% url 'loginhome' %}">Home</a></button>
+			        <button><a href="{% url 'edit' user.id %}">Edit</a></button>
+			        <button><a href="{% url 'delete' user.id %}">Delete</a></button>
+			    </form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

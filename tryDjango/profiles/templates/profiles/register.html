@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Registration Page</title>
+	{% include 'profiles/navbar.html' %}
+</head>
+<body>
+	<div class="container">
+			{% if messages %}
+			{%for i in messages %}
+				<div class='alert alert-success{{ i.tags }}'>{{ i }}</div>
+			{% endfor %}
+			{% endif %}
+		<div class="card">
+			<div class="card-header bg-secondary text-white">
+			    {% if user.is_authenticated %}
+			    <h2>You are logged in.</h2>
+			    </div>
+			    <div class="card-body">
+			        <h4>If you want to logout,press the button below</h4><br>
+			        <button><a href="{% url 'logout' %}">Logout</a></button><br><br>
+			        <h4>If you want to return to login homepage,press the button below</h4><br>
+			        <button><a href="{% url 'loginhome' %}">Login Homepage</a></button>
+		        {% else %}
+				<h1>Registration Page</h1>
+			</div>
+			<div class="card-body">
+				<form action="{% url 'register' %}" method="POST" enctype='multipart/form-data'>
+				{% csrf_token %}
+				<br>{{ form.as_p }}
+			</div>
+			<div class="card-footer">
+				<input type="submit" name="submit">
+				</form>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
